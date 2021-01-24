@@ -1,0 +1,51 @@
+﻿@model ICURotationApp.Models.FacilityList
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Rotation Change</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="FacilityId" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Hospital</label><br />
+              <input asp-for="Name" class="form-control" readonly />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Region" class="control-label"></label>
+                <input asp-for="Region" class="form-control" readonly />
+                <span asp-validation-for="Region" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="NextInRotation" /> @Html.DisplayNameFor(model => model.NextInRotation)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberOfSkips" class="control-label"></label>
+                <input asp-for="NumberOfSkips" class="form-control" />
+                <span asp-validation-for="NumberOfSkips" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-action="Edit" type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+
+    <a asp-action="Index">Back to List</a><br />
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

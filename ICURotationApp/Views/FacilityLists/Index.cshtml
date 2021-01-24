@@ -1,0 +1,91 @@
+﻿@*@model IEnumerable<ICURotationApp.Models.FacilityList>*@
+
+@model ICURotationApp.Models.FacilityRegionViewModel
+
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <h5 style="text-align:center; font-family:'Trebuchet MS';">MISSISSIPPI MED-COM</h5>
+    <h1 class="border-bottom" style="text-align:center; padding-bottom:25px; font-family:'Trebuchet MS'">ICU Rotation</h1>
+
+    <!--
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    -->
+
+    <div style="background-color:#9EB0D6; padding:25px; border-top-left-radius:50px; border-top-right-radius:50px; box-shadow: 0px 10px 10px 5px #888888">
+
+        <form asp-controller="FacilityLists" asp-action="Index" method="get">
+
+            <p>
+
+                Region: <select style="margin-right:50px" asp-for="FacilityRegion" asp-items="Model.Regions">
+                    <option value="">All</option>
+                </select>
+
+                Hospital Name: <input type="text" name="SearchString" />
+                <input type="submit" value="Search" style="margin-right:330px" />
+                
+
+
+            </p>
+
+        </form>
+
+    </div>
+
+    <table class="table table-striped table-hover table-borderless">
+        <thead class="table-bordered" style="color:white; font-family:'Trebuchet MS'; font-size:larger; background-color:#0E5064">
+            <tr>
+                <th style="text-align:center">
+                    @Html.DisplayNameFor(model => model.Facilities[0].Name)
+                </th>
+                <th style="text-align:center">
+                    @Html.DisplayNameFor(model => model.Facilities[0].Region)
+                </th>
+                <th style="text-align:center">
+                    @Html.DisplayNameFor(model => model.Facilities[0].NextInRotation)
+                </th>
+                <th style="text-align:center">
+                    @Html.DisplayNameFor(model => model.Facilities[0].NumberOfSkips)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody style="background-color:#9EB0D6; box-shadow: 5px 10px 18px #888888">
+            @foreach (var item in Model.Facilities)
+            {
+                <tr>
+                    <td style="text-align:center">
+                        <a class="nav-link text-dark" asp-action="Edit" asp-route-id="@item.FacilityId"> @Html.DisplayFor(modelItem => item.Name) </a>
+                    </td>
+                    <td style="text-align:center">
+                        @Html.DisplayFor(modelItem => item.Region)
+                    </td>
+                    <td style="text-align:center">
+                        @Html.DisplayFor(modelItem => item.NextInRotation)
+                    </td>
+                    <td style="text-align:center">
+                        @Html.DisplayFor(modelItem => item.NumberOfSkips)
+                    </td>
+                    <td>
+                        <a asp-action="PatientAccepted" asp-route-id="@item.FacilityId">Accepted</a>
+                        <!--  <a asp-action="AddSkip" asp-route-id="@item.FacilityId">Add Skip</a> -->
+                        <!--  <a asp-action="Details" asp-route-id="@item.FacilityId">Details</a> -->
+                        <!--  <a asp-action="Delete" asp-route-id="@item.FacilityId">Delete</a> -->
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+
+
+
+
+

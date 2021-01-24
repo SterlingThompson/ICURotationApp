@@ -1,0 +1,66 @@
+﻿@model ICURotationApp.Models.Acceptance
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Acceptance</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="AcceptanceId" />
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GoldenHourNumber" class="control-label"></label>
+                <input asp-for="GoldenHourNumber" class="form-control" />
+                <span asp-validation-for="GoldenHourNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChiefComplaint" class="control-label"></label>
+                <input asp-for="ChiefComplaint" class="form-control" />
+                <span asp-validation-for="ChiefComplaint" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SendingFacility" class="control-label"></label>
+                <input asp-for="SendingFacility" class="form-control" />
+                <span asp-validation-for="SendingFacility" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="ReceivingFacility" class="control-label"></label>
+                <input asp-for="ReceivingFacility" class="form-control" />
+                
+                <span asp-validation-for="ReceivingFacility" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InitiationLocation" class="control-label"></label>
+                <input asp-for="InitiationLocation" class="form-control" />
+                <span asp-validation-for="InitiationLocation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SkipReason" class="control-label"></label>
+                <input asp-for="SkipReason" class="form-control" />
+                <span asp-validation-for="SkipReason" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
